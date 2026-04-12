@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trades - Trading Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-light">
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a href="#" class="nav_logo">
+                <img src="img/LOGO%20MP.png" class="nav_logo-img" alt="EduTrade logo">
+                <span class="nav_logo-name">EduTrade</span>
+            </a>
+            <div class="nav_list">
+                <a href="dashboard.html" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name" data-i18n="nav-dashboard">Dashboard</span></a>
+                <a href="trades.html" class="nav_link active"><i class='bx bx-dollar-circle nav_icon'></i><span class="nav_name" data-i18n="nav-trades">Trades</span></a>
+                <a href="statistics.html" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name" data-i18n="nav-stats">Statistics</span></a>
+                <a href="gallery.html" class="nav_link"><i class='bx bx-image nav_icon'></i><span class="nav_name" data-i18n="nav-gallery">Gallery</span></a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<header class="header" id="header">
+    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+    <div class="header_right">
+        <div class="dropdown lang-switch">
+            <button class="btn lang-btn dropdown-toggle" data-bs-toggle="dropdown" id="active-lang">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/330px-Flag_of_the_Czech_Republic.svg.png"> CZ
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item lang-item" href="#" data-lang="cz"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/330px-Flag_of_the_Czech_Republic.svg.png"> Cestina</a></li>
+                <li><a class="dropdown-item lang-item" href="#" data-lang="en"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/330px-Flag_of_the_United_Kingdom.svg.png"> English</a></li>
+            </ul>
+        </div>
+        <div class="btn-group" style="width: 160px">
+            <button type="button" class="dropdown-toggle btn-user" data-bs-toggle="dropdown">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/250px-Default_pfp.svg.png" alt="User">
+                <span>Zbynek</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="settings.html"><i class='bx bx-cog'></i> <span data-i18n="nav-settings">Settings</span></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="index.html"><i class='bx bx-log-out'></i> <span data-i18n="logout">Logout</span></a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main id="body-pd" class="p-4 body-pd">
+    <div class="mb-4"><h2 data-i18n="trades-title">Trades Overview</h2></div>
+
+    <div class="card section-card mb-4 p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="calendar-title h5 mb-0" id="calendar-month-title">Month</h3>
+            <div class="calendar-nav">
+                <button class="btn btn-outline-primary btn-sm" id="cal-prev"><i class='bx bx-chevron-left'></i></button>
+                <button class="btn btn-outline-primary btn-sm" id="cal-next"><i class='bx bx-chevron-right'></i></button>
+            </div>
+        </div>
+
+        <div class="calendar-weekdays d-flex text-center fw-bold mb-2 muted" style="font-size: 0.8rem;">
+            <div style="flex:1" data-i18n="day-mon">Mon</div>
+            <div style="flex:1" data-i18n="day-tue">Tue</div>
+            <div style="flex:1" data-i18n="day-wed">Wed</div>
+            <div style="flex:1" data-i18n="day-thu">Thu</div>
+            <div style="flex:1" data-i18n="day-fri">Fri</div>
+            <div style="flex:1" data-i18n="day-sat">Sat</div>
+            <div style="flex:1" data-i18n="day-sun">Sun</div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+
+        <div class="calendar-legend d-flex gap-3 mt-3 justify-content-center" style="font-size: 0.8rem;">
+            <div class="legend-item"><span class="badge bg-success">*</span> <span data-i18n="legend-profit">Profit</span></div>
+            <div class="legend-item"><span class="badge bg-danger">*</span> <span data-i18n="legend-loss">Loss</span></div>
+            <div class="legend-item"><span class="badge bg-primary">*</span> <span data-i18n="legend-payout">Payout</span></div>
+        </div>
+    </div>
+
+    <div class="card section-card">
+        <div class="table-title d-flex justify-content-between align-items-center mb-3">
+            <h5 data-i18n="closed-trades-heading">Closed Trades <i class="bx bx-info-circle info-tip" data-i18n-title="tip-closed-trades"></i></h5>
+            <div class="table-tools d-flex gap-2">
+                <select id="tradeSort" class="form-select form-select-sm bg-dark text-light border-secondary">
+                    <option value="date_desc">Date: newest</option>
+                    <option value="date_asc">Date: oldest</option>
+                    <option value="pl_desc">P/L: highest</option>
+                    <option value="pl_asc">P/L: lowest</option>
+                </select>
+                <input id="tradeSearch" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Search symbol..." data-i18n-placeholder="search-placeholder">
+            </div>
+        </div>
+        <div class="closed-table-wrap">
+            <table class="table table-hover mt-3" id="closedTradesTable">
+                <thead>
+                    <tr>
+                        <th data-i18n="th-symbol">Symbol <i class="bx bx-info-circle info-tip" data-i18n-title="tip-symbol"></i></th>
+                        <th data-i18n="th-volume">Volume <i class="bx bx-info-circle info-tip" data-i18n-title="tip-volume"></i></th>
+                        <th data-i18n="th-open">Open Time <i class="bx bx-info-circle info-tip" data-i18n-title="tip-open-time"></i></th>
+                        <th data-i18n="th-entry">Avg Entry <i class="bx bx-info-circle info-tip" data-i18n-title="tip-entry"></i></th>
+                        <th data-i18n="th-bias">Bias <i class="bx bx-info-circle info-tip" data-i18n-title="tip-bias"></i></th>
+                        <th data-i18n="th-duration">Duration <i class="bx bx-info-circle info-tip" data-i18n-title="tip-duration"></i></th>
+                        <th data-i18n="th-close">Close Time <i class="bx bx-info-circle info-tip" data-i18n-title="tip-close-time"></i></th>
+                        <th data-i18n="th-avgclose">Avg Close <i class="bx bx-info-circle info-tip" data-i18n-title="tip-avg-close"></i></th>
+                        <th data-i18n="th-profit">Profit <i class="bx bx-info-circle info-tip" data-i18n-title="tip-profit"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="closedTradesBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+

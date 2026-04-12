@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTrade - Settings</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .settings-wrap { max-width: 1050px; margin: auto; }
+    .soft-card { border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .soft-divider { margin: 18px 0; }
+    .soft-label { font-size: 0.9rem; margin-bottom: 6px; }
+    .soft-input { border-radius: 16px; padding: 12px 14px; transition: 0.3s ease; }
+    .soft-input:focus { border-color: var(--primary) !important; box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.1) !important; }
+    .pill-btn { border-radius: 18px; padding: 12px 16px; }
+    .setting-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 0; }
+    .setting-left { display: flex; gap: 14px; align-items: flex-start; }
+    .setting-icon { width: 42px; height: 42px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .setting-title { font-weight: 600; margin-bottom: 2px; }
+    .setting-sub { font-size: 0.9rem; line-height: 1.3; }
+    .form-check-input:checked { background-color: #22c55e !important; border-color: #22c55e !important; }
+    .danger-card { border: 1px solid rgba(239,68,68,0.25); }
+    .btn-soft { border-radius: 10px; transition: 0.3s; }
+    .btn-save { background: var(--primary); border: none; color: #f8fbff; font-weight: 700; }
+    .btn-save:hover { background: #2563eb; color: #f8fbff; }
+    .muted-small { font-size: 0.9rem; }
+  </style>
+</head>
+<body class="bg-dark text-light">
+
+<div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div>
+      <a href="#" class="nav_logo"><img src="img/LOGO%20MP.png" class="nav_logo-img" alt="EduTrade logo"><span class="nav_logo-name">EduTrade</span></a>
+      <div class="nav_list">
+        <a href="dashboard.html" class="nav_link"><i class='bx bx-grid-alt nav_icon'></i><span class="nav_name" data-i18n="nav-dashboard">Dashboard</span></a>
+        <a href="trades.html" class="nav_link"><i class='bx bx-dollar-circle nav_icon'></i><span class="nav_name" data-i18n="nav-trades">Trades</span></a>
+        <a href="statistics.html" class="nav_link"><i class='bx bx-bar-chart-alt-2 nav_icon'></i><span class="nav_name" data-i18n="nav-stats">Statistics</span></a>
+        <a href="gallery.html" class="nav_link"><i class='bx bx-image nav_icon'></i><span class="nav_name" data-i18n="nav-gallery">Gallery</span></a>      </div>
+    </div>
+  </nav>
+</div>
+
+<header class="header" id="header">
+  <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+  <div class="header_right">
+    <div class="dropdown lang-switch">
+      <button class="btn lang-btn dropdown-toggle" data-bs-toggle="dropdown" id="active-lang">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/330px-Flag_of_the_Czech_Republic.svg.png"> CZ
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item lang-item" href="#" data-lang="cz"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/330px-Flag_of_the_Czech_Republic.svg.png"> Cestina</a></li>
+        <li><a class="dropdown-item lang-item" href="#" data-lang="en"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/330px-Flag_of_the_United_Kingdom.svg.png"> English</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" style="width:160px">
+      <button class="dropdown-toggle btn-user" data-bs-toggle="dropdown"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/250px-Default_pfp.svg.png" alt="User"> Zbynek</button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="settings.html"><i class='bx bx-cog'></i> <span data-i18n="nav-settings">Settings</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="index.html"><i class='bx bx-log-out'></i> <span data-i18n="logout">Logout</span></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow-1 p-4 body-pd" id="body-pd">
+  <div class="settings-wrap">
+    <div class="mb-4">
+      <h2 class="mb-1" data-i18n="settings-title">Settings</h2>
+      <div class="muted-small" data-i18n="settings-sub">Customize your profile, trading defaults and app preferences.</div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="soft-card p-4 h-100">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="mb-0" data-i18n="profile">Profile</h5>
+            <span class="badge rounded-pill text-bg-secondary" data-i18n="profile-badge">Simulated</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/250px-Default_pfp.svg.png" style="width:72px;height:72px;border-radius:18px;object-fit:cover;" alt="avatar">
+            <div class="flex-grow-1">
+              <div class="fw-semibold" style="font-size: 1.05rem;">Zbynek</div>
+              <div class="text-secondary" style="font-size: 0.9rem;" data-i18n="profile-desc">Personal trading journal</div>
+            </div>
+            <button class="btn btn-soft btn-sm pill-btn" type="button" data-i18n="change-btn">Change</button>
+          </div>
+          <div class="mb-3">
+            <div class="soft-label" data-i18n="username">Username</div>
+            <input type="text" class="form-control soft-input" value="Zbynek">
+          </div>
+          <div class="mb-3">
+            <div class="soft-label" data-i18n="email">Email</div>
+            <input type="email" class="form-control soft-input" value="zbynek@email.com">
+          </div>
+          <div>
+            <div class="soft-label" data-i18n="new-password">New password</div>
+            <input type="password" class="form-control soft-input" placeholder="........">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="soft-card p-4 h-100">
+          <h5 class="mb-3" data-i18n="trading-defaults">Trading Defaults</h5>
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-wallet'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="currency">Currency</div>
+                <div class="setting-sub" data-i18n="currency-sub">Choose how P/L is displayed in the app.</div>
+              </div>
+            </div>
+            <select id="currencySelect" class="form-control soft-input" style="max-width: 170px;">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="CZK">CZK</option>
+            </select>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-target-lock'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="risk-per-trade">Default risk per trade</div>
+                <div class="setting-sub" data-i18n="risk-sub">Used for future trade templates.</div>
+              </div>
+            </div>
+            <select class="form-control soft-input" style="max-width: 170px;">
+              <option>0.25%</option>
+              <option selected>0.50%</option>
+              <option>1.00%</option>
+              <option>2.00%</option>
+            </select>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="row g-3">
+            <div class="col-md-4"><div class="soft-label" data-i18n="daily-loss">Daily loss limit</div><input type="number" class="form-control soft-input" value="600"></div>
+            <div class="col-md-4"><div class="soft-label" data-i18n="max-loss">Max loss limit</div><input type="number" class="form-control soft-input" value="2500"></div>
+            <div class="col-md-4"><div class="soft-label" data-i18n="profit-target">Profit target</div><input type="number" class="form-control soft-input" value="3000"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="soft-card p-4">
+          <h5 class="mb-3" data-i18n="app-prefs">App Preferences</h5>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-moon'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="dark-mode">Dark Mode</div>
+                <div class="setting-sub" data-i18n="dark-mode-sub">Better for trading at night.</div>
+              </div>
+            </div>
+            <div class="form-check form-switch m-0"><input id="darkModeSwitch" class="form-check-input" type="checkbox"></div>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-globe'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="language">Language</div>
+                <div class="setting-sub" data-i18n="lang-sub">Choose the UI language.</div>
+              </div>
+            </div>
+            <select id="settingsLanguageSelect" class="form-control soft-input" style="max-width: 200px;">
+              <option value="cz">Cestina</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-calendar'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="date-format">Date format</div>
+                <div class="setting-sub" data-i18n="date-sub">Affects trades, statistics and calendar view.</div>
+              </div>
+            </div>
+            <select id="dateFormatSelect" class="form-control soft-input" style="max-width: 200px;">
+              <option value="DD.MM.YYYY" selected>DD.MM.YYYY</option>
+              <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+              <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+            </select>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon"><i class='bx bx-bell'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="weekly-summary">Weekly Summary</div>
+                <div class="setting-sub" data-i18n="weekly-summary-sub">Receive a weekly performance recap.</div>
+              </div>
+            </div>
+            <div class="form-check form-switch m-0"><input class="form-check-input" type="checkbox" checked></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="soft-card danger-card p-4">
+          <h5 class="mb-3 text-danger" data-i18n="danger-zone">Danger Zone</h5>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon" style="border-color: rgba(239,68,68,0.25);"><i class='bx bx-trash'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="reset-trades">Reset all trades</div>
+                <div class="setting-sub" data-i18n="reset-trades-sub">Removes all trades from your journal.</div>
+              </div>
+            </div>
+            <button class="btn btn-outline-danger btn-sm pill-btn" data-i18n="reset-trades">Reset</button>
+          </div>
+
+          <div class="soft-divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-left">
+              <div class="setting-icon" style="border-color: rgba(239,68,68,0.25);"><i class='bx bx-user-x'></i></div>
+              <div>
+                <div class="setting-title" data-i18n="delete-acc">Delete account</div>
+                <div class="setting-sub" data-i18n="delete-acc-sub">This action is permanent.</div>
+              </div>
+            </div>
+            <button class="btn btn-danger btn-sm pill-btn" data-i18n="delete-acc">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button class="btn btn-save w-100 py-3" style="border-radius: 20px;" data-i18n="save-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
